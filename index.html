@@ -3,44 +3,429 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>m-tantan - GitHub Pages</title>
+    <title>WrecklessEngineer - Developer & GitHub Copilot Expert</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #0366d6;
+            --secondary-color: #24292e;
+            --background-dark: #0d1117;
+            --background-light: #161b22;
+            --text-primary: #c9d1d9;
+            --text-secondary: #8b949e;
+            --accent-color: #58a6ff;
+            --border-color: #30363d;
+            --success-color: #3fb950;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             line-height: 1.6;
-            max-width: 800px;
+            background-color: var(--background-dark);
+            color: var(--text-primary);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(13, 17, 23, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        nav .container {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
-            background-color: #f6f8fa;
-            color: #24292e;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .container {
-            background-color: white;
-            padding: 40px;
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        #hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent-color), var(--success-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        #hero .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        #hero .bio {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.2s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: #1f6feb;
+            transform: translateY(-2px);
+        }
+
+        /* Repositories Section */
+        #repositories {
+            background-color: var(--background-light);
+        }
+
+        .repo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .repo-card {
+            background-color: var(--background-dark);
+            border: 1px solid var(--border-color);
             border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+            padding: 2rem;
+            transition: transform 0.3s, border-color 0.3s;
         }
-        h1 {
-            color: #0366d6;
-            margin-bottom: 20px;
+
+        .repo-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
         }
-        p {
-            margin-bottom: 15px;
+
+        .repo-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
         }
-        a {
-            color: #0366d6;
+
+        .repo-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .repo-card .repo-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .repo-card .repo-link:hover {
+            text-decoration: underline;
+        }
+
+        .repo-meta {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: var(--background-dark);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: var(--background-light);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--background-light);
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-color);
+        }
+
+        footer a {
+            color: var(--accent-color);
             text-decoration: none;
         }
-        a:hover {
+
+        footer a:hover {
             text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+            }
+
+            #hero h1 {
+                font-size: 2.5rem;
+            }
+
+            #hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            .repo-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to m-tantan's GitHub Pages</h1>
-        <p>This is the homepage for m-tantan's GitHub Pages site.</p>
-        <p>Visit my <a href="https://github.com/m-tantan">GitHub profile</a> to see my projects and contributions.</p>
-    </div>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">WrecklessEngineer</div>
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#repositories">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div>
+            <h1>WrecklessEngineer</h1>
+            <p class="subtitle">Developer • GitHub Copilot Expert • Workshop Facilitator</p>
+            <p class="bio">
+                Passionate about empowering developers with AI-powered tools and best practices. 
+                Specializing in GitHub Copilot, developer productivity, and modern software engineering. 
+                I help teams unlock the full potential of AI pair programming through hands-on workshops and training.
+            </p>
+            <a href="#contact" class="btn">Book a Workshop</a>
+        </div>
+    </section>
+
+    <!-- Repositories Section -->
+    <section id="repositories">
+        <h2>Featured Projects</h2>
+        <div class="repo-grid">
+            <div class="repo-card">
+                <h3>GHCP-Lab</h3>
+                <p>
+                    Comprehensive hands-on laboratory for GitHub Copilot learning and experimentation. 
+                    Part of Microsoft's official resources for mastering AI pair programming with practical exercises and real-world scenarios.
+                </p>
+                <a href="https://github.com/Microsoft/GHCP-Lab" class="repo-link" target="_blank">
+                    View on GitHub →
+                </a>
+                <div class="repo-meta">
+                    <span>Microsoft</span>
+                    <span>•</span>
+                    <span>GitHub Copilot</span>
+                </div>
+            </div>
+
+            <div class="repo-card">
+                <h3>vsc-tip-of-the-day</h3>
+                <p>
+                    Daily Visual Studio Code tips and tricks to boost your productivity. 
+                    A curated collection of IDE features, shortcuts, and extensions to help developers work smarter, not harder.
+                </p>
+                <a href="https://github.com/m-tantan/vsc-tip-of-the-day" class="repo-link" target="_blank">
+                    View on GitHub →
+                </a>
+                <div class="repo-meta">
+                    <span>VS Code</span>
+                    <span>•</span>
+                    <span>Productivity</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Book a GitHub Copilot Workshop</h2>
+        <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">
+            Interested in bringing GitHub Copilot expertise to your team? Fill out the form below to schedule a workshop.
+        </p>
+        <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <div class="form-group">
+                <label for="name">Name *</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="company">Company/Organization</label>
+                <input type="text" id="company" name="company">
+            </div>
+
+            <div class="form-group">
+                <label for="workshop-type">Workshop Type *</label>
+                <select id="workshop-type" name="workshop-type" required>
+                    <option value="">Select a workshop type</option>
+                    <option value="introduction">Introduction to GitHub Copilot</option>
+                    <option value="advanced">Advanced GitHub Copilot Techniques</option>
+                    <option value="best-practices">Best Practices & Security</option>
+                    <option value="custom">Custom Workshop</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Additional Details</label>
+                <textarea id="message" name="message" placeholder="Tell me about your team, goals, and any specific topics you'd like to cover..."></textarea>
+            </div>
+
+            <button type="submit" class="btn">Send Request</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 WrecklessEngineer. All rights reserved.</p>
+        <p>
+            <a href="https://github.com/m-tantan" target="_blank">GitHub</a>
+        </p>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handling (for demo purposes)
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            // Note: Replace the form action with actual form handling service
+            // For now, this allows the form to submit to the specified action URL
+            console.log('Form submitted');
+        });
+    </script>
 </body>
 </html>
