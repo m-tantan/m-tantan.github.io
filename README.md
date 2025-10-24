@@ -1,2 +1,2 @@
 # m-tantan.github.io
-Github Page
+[Link to Page](https://m-tantan.github.io)
