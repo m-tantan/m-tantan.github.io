@@ -71,6 +71,32 @@ nav a:hover {
     color: var(--accent-color);
 }
 
+/* Social Icons in Navigation */
+nav .social-icons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+nav .social-icons a {
+    display: flex;
+    align-items: center;
+    transition: color 0.3s, transform 0.2s;
+}
+
+nav .social-icons a:hover {
+    color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+nav .social-icons svg {
+    color: var(--text-primary);
+}
+
+nav .social-icons a:hover svg {
+    color: var(--accent-color);
+}
+
 /* Sections */
 section {
     padding: 6rem 2rem;
@@ -201,6 +227,33 @@ section h2 {
     background-color: var(--background-dark);
 }
 
+.contact-social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.contact-social-icons a {
+    display: flex;
+    align-items: center;
+    color: var(--text-primary);
+    transition: color 0.3s, transform 0.2s;
+}
+
+.contact-social-icons a:hover {
+    color: var(--accent-color);
+    transform: translateY(-3px);
+}
+
+.contact-social-icons svg {
+    color: var(--text-primary);
+}
+
+.contact-social-icons a:hover svg {
+    color: var(--accent-color);
+}
+
 .contact-form {
     max-width: 600px;
     margin: 2rem auto;
@@ -251,6 +304,33 @@ footer {
     border-top: 1px solid var(--border-color);
 }
 
+.footer-social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.footer-social-icons a {
+    display: flex;
+    align-items: center;
+    color: var(--text-primary);
+    transition: color 0.3s, transform 0.2s;
+}
+
+.footer-social-icons a:hover {
+    color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+.footer-social-icons svg {
+    color: var(--text-primary);
+}
+
+.footer-social-icons a:hover svg {
+    color: var(--accent-color);
+}
+
 footer a {
     color: var(--accent-color);
     text-decoration: none;
@@ -264,6 +344,15 @@ footer a:hover {
 @media (max-width: 768px) {
     nav ul {
         gap: 1rem;
+    }
+
+    nav .social-icons {
+        gap: 0.8rem;
+    }
+
+    nav .social-icons svg {
+        width: 20px;
+        height: 20px;
     }
 
     #hero h1 {
@@ -284,5 +373,13 @@ footer a:hover {
 
     .repo-grid {
         grid-template-columns: 1fr;
+    }
+
+    .contact-social-icons {
+        gap: 1.5rem;
+    }
+
+    .footer-social-icons {
+        gap: 1rem;
     }
 }
