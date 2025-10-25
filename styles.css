@@ -100,6 +100,7 @@ section {
     padding: 6rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
+    scroll-margin-top: 80px;
 }
 
 section h2 {
@@ -317,16 +318,21 @@ footer a:hover {
         height: 20px;
     }
 
+    section {
+        padding: 4rem 1.5rem;
+        scroll-margin-top: 100px;
+    }
+
+    #hero {
+        padding-top: 120px;
+    }
+
     #hero h1 {
         font-size: 2.5rem;
     }
 
     #hero .subtitle {
         font-size: 1.2rem;
-    }
-
-    section {
-        padding: 4rem 1.5rem;
     }
 
     section h2 {
