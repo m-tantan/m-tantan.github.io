@@ -52,29 +52,102 @@ nav .logo {
     font-size: 1.5rem;
     font-weight: bold;
     color: var(--accent-color);
+    z-index: 1001;
 }
 
-nav ul {
-    list-style: none;
+/* Hamburger Menu Button */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1001;
+    transition: transform 0.3s ease;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-primary);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.hamburger:hover span {
+    background-color: var(--accent-color);
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Navigation Menu */
+.nav-menu {
     display: flex;
+    align-items: center;
     gap: 2rem;
 }
 
-nav a {
-    color: var(--text-primary);
-    text-decoration: none;
-    transition: color 0.3s;
-    font-weight: 500;
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
 }
 
-nav a:hover {
+.nav-links a {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: 500;
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-color), var(--success-color));
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
     color: var(--accent-color);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Active state for current section */
+.nav-links a.active {
+    color: var(--accent-color);
+}
+
+.nav-links a.active::after {
+    width: 100%;
 }
 
 /* Social Icons - Base Styles */
 .social-icons a,
 .contact-social-icons a,
-.footer-social-icons a {
+.footer-social-icons a,
+.nav-social-icons a {
     display: flex;
     align-items: center;
     color: var(--text-primary);
@@ -83,13 +156,14 @@ nav a:hover {
 
 .social-icons a:hover,
 .contact-social-icons a:hover,
-.footer-social-icons a:hover {
+.footer-social-icons a:hover,
+.nav-social-icons a:hover {
     color: var(--accent-color);
     transform: translateY(-2px);
 }
 
 /* Social Icons in Navigation */
-nav .social-icons {
+.nav-social-icons {
     display: flex;
     gap: 1rem;
     align-items: center;
@@ -305,17 +379,76 @@ footer a:hover {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    nav ul {
-        gap: 1rem;
+    /* Show hamburger menu */
+    .hamburger {
+        display: flex;
     }
 
-    nav .social-icons {
-        gap: 0.8rem;
+    /* Hide navigation menu by default on mobile */
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 280px;
+        background-color: var(--background-dark);
+        border-left: 1px solid var(--border-color);
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 5rem 2rem 2rem;
+        gap: 3rem;
+        transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
     }
 
-    nav .social-icons svg {
-        width: 20px;
-        height: 20px;
+    /* Show menu when active */
+    .nav-menu.active {
+        right: 0;
+    }
+
+    /* Stack navigation links vertically */
+    .nav-links {
+        flex-direction: column;
+        gap: 1.5rem;
+        width: 100%;
+    }
+
+    .nav-links li {
+        width: 100%;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 1rem;
+        font-size: 1.2rem;
+        border-radius: 8px;
+        background: linear-gradient(90deg, transparent, transparent);
+        transition: all 0.3s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+        background: linear-gradient(90deg, var(--accent-color) 0%, transparent 100%);
+        padding-left: 1.5rem;
+        box-shadow: 0 0 20px rgba(88, 166, 255, 0.2);
+    }
+
+    .nav-links a::after {
+        display: none;
+    }
+
+    /* Position social icons at bottom of mobile menu */
+    .nav-social-icons {
+        gap: 1.5rem;
+        margin-top: auto;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border-color);
+        justify-content: center;
+    }
+
+    .nav-social-icons svg {
+        width: 28px;
+        height: 28px;
     }
 
     section {
