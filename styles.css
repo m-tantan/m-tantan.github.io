@@ -232,9 +232,9 @@ section h2 {
     margin-bottom: 2rem;
 }
 
-.contact-social-icons a:hover {
+/* .contact-social-icons a:hover {
     transform: translateY(-3px);
-}
+} */
 
 .contact-form {
     max-width: 600px;
