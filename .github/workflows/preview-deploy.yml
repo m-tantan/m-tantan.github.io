@@ -34,12 +34,10 @@ jobs:
           mkdir -p preview/pr-${{ github.event.pull_request.number }}
           
           # Copy all site files to the preview directory
-          cp index.html preview/pr-${{ github.event.pull_request.number }}/
-          cp styles.css preview/pr-${{ github.event.pull_request.number }}/
-          cp script.js preview/pr-${{ github.event.pull_request.number }}/
-          
-          # If CNAME exists, copy it (but only for main site, not previews)
-          # Previews should use the default GitHub Pages domain
+          # Using wildcard to include all HTML, CSS, and JS files
+          cp *.html preview/pr-${{ github.event.pull_request.number }}/ 2>/dev/null || true
+          cp *.css preview/pr-${{ github.event.pull_request.number }}/ 2>/dev/null || true
+          cp *.js preview/pr-${{ github.event.pull_request.number }}/ 2>/dev/null || true
           
           echo "Preview prepared for PR #${{ github.event.pull_request.number }}"
           ls -la preview/pr-${{ github.event.pull_request.number }}/
