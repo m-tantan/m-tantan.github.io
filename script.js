@@ -67,9 +67,4 @@ function highlightActiveSection() {
 window.addEventListener('scroll', highlightActiveSection);
 window.addEventListener('load', highlightActiveSection);
 
-// Form submission handling (for demo purposes)
-document.querySelector('.contact-form').addEventListener('submit', function(e) {
-    // Note: Replace the form action with actual form handling service
-    // For now, this allows the form to submit to the specified action URL
-    console.log('Form submitted');
-});
+// Form is now embedded as iframe - no client-side handling needed
