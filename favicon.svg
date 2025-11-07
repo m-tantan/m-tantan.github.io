@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Orchestrator glowing node with embossed YM initials">
+  <defs>
+    <!-- soft glow filter -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- central radial gradient -->
+    <radialGradient id="centerGrad" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#8af7ff" stop-opacity="1"/>
+      <stop offset="45%" stop-color="#57d7ff" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#2a9cff" stop-opacity="0.9"/>
+    </radialGradient>
+
+    <!-- small node gradient -->
+    <radialGradient id="nodeGrad" cx="35%" cy="35%" r="80%">
+      <stop offset="0%" stop-color="#fff7cc" stop-opacity="1"/>
+      <stop offset="60%" stop-color="#ffd166" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#ff9f1c" stop-opacity="0.9"/>
+    </radialGradient>
+  </defs>
+
+  <!-- transparent background -->
+  <rect width="128" height="128" fill="none" />
+
+  <!-- radiating lines -->
+  <g stroke="#9ad7ff" stroke-width="2" stroke-linecap="round" stroke-opacity="0.85">
+    <line x1="64" y1="64" x2="64"  y2="22" />
+    <line x1="64" y1="64" x2="98"  y2="36" />
+    <line x1="64" y1="64" x2="110" y2="72" />
+    <line x1="64" y1="64" x2="98"  y2="108" />
+    <line x1="64" y1="64" x2="30"  y2="108" />
+    <line x1="64" y1="64" x2="18"  y2="72" />
+    <line x1="64" y1="64" x2="30"  y2="36" />
+  </g>
+
+  <!-- small outer nodes -->
+  <g>
+    <circle cx="64" cy="22"  r="6" fill="url(#nodeGrad)" stroke="#ffbf6b" stroke-width="1" />
+    <circle cx="98" cy="36"  r="6" fill="url(#nodeGrad)" stroke="#ffbf6b" stroke-width="1" />
+    <circle cx="110" cy="72" r="6" fill="url(#nodeGrad)" stroke="#ffbf6b" stroke-width="1" />
+    <circle cx="98" cy="108" r="6" fill="url(#nodeGrad)" stroke="#ffbf6b" stroke-width="1" />
+    <circle cx="30" cy="108" r="6" fill="url(#nodeGrad)" stroke="#ffbf6b" stroke-width="1" />
+    <circle cx="18" cy="72"  r="6" fill="url(#nodeGrad)" stroke="#ffbf6b" stroke-width="1" />
+    <circle cx="30" cy="36"  r="6" fill="url(#nodeGrad)" stroke="#ffbf6b" stroke-width="1" />
+  </g>
+
+  <!-- central glowing node -->
+  <g filter="url(#glow)">
+    <circle cx="64" cy="64" r="26" fill="url(#centerGrad)" fill-opacity="0.25" />
+    <circle cx="64" cy="64" r="18" fill="url(#centerGrad)" />
+    <circle cx="64" cy="64" r="8" fill="#ffffff" fill-opacity="0.95" />
+  </g>
+
+  <!-- subtle inner connection nodes -->
+  <g fill="#ffffff" fill-opacity="0.95">
+    <circle cx="64" cy="45" r="1.6"/>
+    <circle cx="82" cy="64" r="1.6"/>
+    <circle cx="64" cy="83" r="1.6"/>
+    <circle cx="46" cy="64" r="1.6"/>
+  </g>
+
+  <!-- YM initials with stroke and glow -->
+  <text
+    x="64"
+    y="118"
+    text-anchor="middle"
+    font-family="monospace"
+    font-weight="700"
+    font-size="14"
+    fill="#bde4ff"
+    stroke="#1a3a4a"
+    stroke-width="1"
+    paint-order="stroke"
+    filter="url(#glow)"
+    letter-spacing="1"
+  >
+    YM
+  </text>
+
+  <title>AI Orchestrator — central glowing node with embossed YM initials</title>
+</svg>
