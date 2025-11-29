@@ -220,6 +220,32 @@ section h2 {
     font-weight: 600;
 }
 
+#hero .bio strong a {
+    color: var(--accent-color);
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+#hero .bio strong a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-color), var(--success-color));
+    transition: width 0.3s ease;
+}
+
+#hero .bio strong a:hover {
+    color: var(--success-color);
+}
+
+#hero .bio strong a:hover::after {
+    width: 100%;
+}
+
 .btn {
     display: inline-block;
     padding: 0.8rem 2rem;
