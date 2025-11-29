@@ -67,4 +67,40 @@ function highlightActiveSection() {
 window.addEventListener('scroll', highlightActiveSection);
 window.addEventListener('load', highlightActiveSection);
 
+// Fetch GitHub repository stars
+async function fetchGitHubStars() {
+    const repoCards = document.querySelectorAll('.repo-card[data-repo]');
+    
+    repoCards.forEach(async (card) => {
+        const repo = card.getAttribute('data-repo');
+        const starElement = card.querySelector('.star-count');
+        
+        if (!repo || !starElement) return;
+        
+        try {
+            const response = await fetch(`https://api.github.com/repos/${repo}`);
+            
+            if (!response.ok) {
+                throw new Error('Failed to fetch repository data');
+            }
+            
+            const data = await response.json();
+            const stars = data.stargazers_count;
+            
+            // Format star count with comma separator for thousands
+            const formattedStars = stars.toLocaleString();
+            
+            starElement.textContent = formattedStars;
+            starElement.parentElement.removeAttribute('data-loading');
+        } catch (error) {
+            console.error(`Error fetching stars for ${repo}:`, error);
+            starElement.textContent = 'N/A';
+            starElement.parentElement.removeAttribute('data-loading');
+        }
+    });
+}
+
+// Fetch stars when page loads
+window.addEventListener('load', fetchGitHubStars);
+
 // Form is now embedded as iframe - no client-side handling needed

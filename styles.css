@@ -305,6 +305,22 @@ section h2 {
     gap: 1rem;
     font-size: 0.9rem;
     color: var(--text-secondary);
+    align-items: center;
+}
+
+.repo-stars {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--text-secondary);
+}
+
+.repo-stars[data-loading] .star-count {
+    opacity: 0.5;
+}
+
+.repo-stars svg {
+    color: #f1c40f;
 }
 
 /* Contact Section */
